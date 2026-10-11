@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Тренировка: жим лёжа</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&amp;family=Unbounded:wght@500;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C8F04A}a:hover{color:#E2FF8A}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #0E0F11; color: #F2F2F0; font-family: 'Onest', sans-serif; display: flex; flex-direction: column; overflow: hidden; padding: 60px 20px 28px; gap: 16px">
+
+  <div style="display: flex; justify-content: space-between; align-items: center">
+    <a href="Main.dc.html" aria-label="Свернуть тренировку" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 22px; background: #1A1C20; color: #F2F2F0">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
+      <div style="font-size: 13px; color: #9A9DA3">Грудь и трицепс</div>
+      <div style="font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums">12:40</div>
+    </div>
+    <button type="button" style="height: 44px; padding: 0 16px; border-radius: 22px; background: #1A1C20; border: none; color: #F2F2F0; font-family: 'Onest', sans-serif; font-size: 15px; font-weight: 600">Завершить</button>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 4px; padding-top: 8px">
+    <div style="font-size: 14px; color: #9A9DA3">Упражнение 1 из 5</div>
+    <h1 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 28px; letter-spacing: -0.5px">Жим лёжа</h1>
+  </div>
+
+  <div style="background: #1A1C20; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 18px">
+    <div style="display: flex; justify-content: space-between; align-items: center">
+      <div style="font-size: 15px; font-weight: 600">{{setLabel}}</div>
+      <div style="font-size: 13px; color: #9A9DA3">В прошлый раз 100 × 8</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; background: #23262B; border-radius: 18px; padding: 14px 10px">
+        <div style="font-size: 13px; color: #9A9DA3">Вес, кг</div>
+        <div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 40px; font-variant-numeric: tabular-nums">{{weightText}}</div>
+        <div style="display: flex; gap: 8px; width: 100%">
+          <button type="button" onClick="{{weightDown}}" aria-label="Убавить 2,5 кг" style="flex-grow: 1; height: 48px; border-radius: 14px; border: none; background: #33373E; color: #F2F2F0; font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 600">−2,5</button>
+          <button type="button" onClick="{{weightUp}}" aria-label="Прибавить 2,5 кг" style="flex-grow: 1; height: 48px; border-radius: 14px; border: none; background: #33373E; color: #F2F2F0; font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 600">+2,5</button>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; background: #23262B; border-radius: 18px; padding: 14px 10px">
+        <div style="font-size: 13px; color: #9A9DA3">Повторы</div>
+        <div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 40px; font-variant-numeric: tabular-nums">{{reps}}</div>
+        <div style="display: flex; gap: 8px; width: 100%">
+          <button type="button" onClick="{{repsDown}}" aria-label="На повтор меньше" style="flex-grow: 1; height: 48px; border-radius: 14px; border: none; background: #33373E; color: #F2F2F0; font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 600">−1</button>
+          <button type="button" onClick="{{repsUp}}" aria-label="На повтор больше" style="flex-grow: 1; height: 48px; border-radius: 14px; border: none; background: #33373E; color: #F2F2F0; font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 600">+1</button>
+        </div>
+      </div>
+    </div>
+
+    <sc-if value="{{resting}}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; align-items: center; justify-content: space-between; height: 64px; border-radius: 18px; background: #2B3317; padding: 0 8px 0 20px">
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 13px; color: #C8F04A">Отдых</div>
+          <div style="font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums">{{restText}}</div>
+        </div>
+        <button type="button" onClick="{{skipRest}}" style="height: 48px; padding: 0 18px; border-radius: 14px; border: none; background: #C8F04A; color: #0E0F11; font-family: 'Onest', sans-serif; font-size: 15px; font-weight: 700">Пропустить</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{canLog}}" hint-placeholder-val="{{ true }}">
+      <button type="button" onClick="{{logSet}}" style="height: 64px; border-radius: 18px; border: none; background: #C8F04A; color: #0E0F11; font-family: 'Onest', sans-serif; font-size: 19px; font-weight: 700">Готово</button>
+    </sc-if>
+    <sc-if value="{{finished}}" hint-placeholder-val="{{ false }}">
+      <a href="History.dc.html" style="display: flex; align-items: center; justify-content: center; height: 64px; border-radius: 18px; background: #23262B; color: #F2F2F0; font-size: 17px; font-weight: 600; text-decoration: none">Все подходы сделаны. Дальше</a>
+    </sc-if>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 0">
+    <sc-for list="{{doneSets}}" as="s" hint-placeholder-count="2">
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 4px; border-bottom: 1px solid #23262B; font-size: 15px">
+        <span style="color: #9A9DA3">Подход {{s.n}}</span>
+        <span style="display: flex; align-items: center; gap: 10px; font-variant-numeric: tabular-nums">{{s.text}}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8F04A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+        </span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; background: #16181B; border-radius: 18px; padding: 14px 16px">
+    <div style="display: flex; flex-direction: column; gap: 2px">
+      <div style="font-size: 12px; color: #9A9DA3">Дальше</div>
+      <div style="font-size: 15px; font-weight: 600">Жим гантелей на наклонной</div>
+    </div>
+    <div style="font-size: 14px; color: #9A9DA3; font-variant-numeric: tabular-nums">3 × 32 кг</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { weight: 100, reps: 8, done: [{ w: 100, r: 8 }, { w: 100, r: 8 }], rest: 0 };
+    this.timer = null;
+  }
+  componentWillUnmount() {
+    if (this.timer) clearInterval(this.timer);
+  }
+  fmt(w) {
+    return String(w).replace('.', ',');
+  }
+  startRest() {
+    if (this.timer) clearInterval(this.timer);
+    this.setState({ rest: 120 });
+    this.timer = setInterval(() => {
+      const next = this.state.rest - 1;
+      if (next <= 0) {
+        clearInterval(this.timer);
+        this.timer = null;
+        this.setState({ rest: 0 });
+      } else {
+        this.setState({ rest: next });
+      }
+    }, 1000);
+  }
+  renderVals() {
+    const total = 4;
+    const done = this.state.done;
+    const finished = done.length >= total;
+    const resting = this.state.rest > 0;
+    const m = Math.floor(this.state.rest / 60);
+    const s = this.state.rest % 60;
+    return {
+      weightText: this.fmt(this.state.weight),
+      reps: this.state.reps,
+      setLabel: finished ? 'Все 4 подхода' : 'Подход ' + (done.length + 1) + ' из ' + total,
+      resting: resting,
+      canLog: !resting && !finished,
+      finished: finished && !resting,
+      restText: m + ':' + (s < 10 ? '0' : '') + s,
+      doneSets: done.map((d, i) => ({ n: i + 1, text: this.fmt(d.w) + ' × ' + d.r })),
+      weightDown: () => this.setState({ weight: Math.max(0, this.state.weight - 2.5) }),
+      weightUp: () => this.setState({ weight: this.state.weight + 2.5 }),
+      repsDown: () => this.setState({ reps: Math.max(1, this.state.reps - 1) }),
+      repsUp: () => this.setState({ reps: this.state.reps + 1 }),
+      logSet: () => {
+        this.setState({ done: done.concat([{ w: this.state.weight, r: this.state.reps }]) });
+        if (done.length + 1 < total) this.startRest();
+      },
+      skipRest: () => {
+        if (this.timer) clearInterval(this.timer);
+        this.timer = null;
+        this.setState({ rest: 0 });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+# Xcode, генерируется XcodeGen
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+DerivedData/
+build/
+
+# SPM
+.build/
+.swiftpm/
+
+# Fastlane
+fastlane/report.xml
+fastlane/README.md
+fastlane/test_output/
+*.ipa
+*.dSYM.zip
+
+# Рабочие копии задач агентов
+.worktrees/
+
+# Claude Code, личное
+.claude/settings.local.json
+
+.DS_Store
